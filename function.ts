@@ -115,3 +115,13 @@ function handleProfilePicturePreview() {
     const profilePicPreview = document.getElementById('profilePicPreview') as HTMLImageElement;
 
     profilePictureInput.addEventListener('change', () => {
+
+                                         const file = profilePictureInput!.files?.[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            profilePicPreview!.src = e.target?.result as string;
+        };
+        reader.readAsDataURL(file);
+    }
+});}
